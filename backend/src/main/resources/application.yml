@@ -1,0 +1,23 @@
+logging:
+  level:
+    org.springframework.web: INFO
+    net.chibidevteam.apiversioning: DEBUG
+    net.chibidevteam.restappliseed: DEBUG
+    net.chibidevteam.ddlmanager: TRACE
+  pattern:
+    console: "[%-5level] %d{HH:mm:ss} {%-10thread} (%F:%L\\) %clr(:) %msg%n"
+    file: "[%-5level] %d{HH:mm:ss} {%-10thread} %-46logger{40} %clr(:) %msg%n"
+  file: /Users/mkyong/application.log
+net.chibidevteam:
+  apiversioning:
+    path:
+      base: /api
+#      varname: justMyApiVarname
+#      api: ${net.chibidevteam.apiversioning.path.base}/{${net.chibidevteam.apiversioning.path.varname}:^${net.chibidevteam.apiversioning.path.prefix}${net.chibidevteam.apiversioning.versions.regex}$}
+      prefix: v
+    versions:
+#      regex: (\d+)(?:\.(\d+))?(.*)
+      supported: 0,1.7,1.8,2.5,3,4
+  securityseed:
+    permitAll: /login
+    authenticated: ${net.chibidevteam.apiversioning.path.base}/**

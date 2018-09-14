@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>backend</artifactId>
+
+	<name>DDLManager-BackEnd</name>
+	<description>DDLManager backend project</description>
+
+	<parent>
+		<groupId>net.chibidevteam.ddlmanager</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<spring-version>1.5.4.RELEASE</spring-version>
+		<apiversioning-version>0.1.0</apiversioning-version>
+		<securityseed-version>0.1.0</securityseed-version>
+        <jackson.databind-version>2.2.3</jackson.databind-version>
+	</properties>
+
+	<dependencies>
+
+		<!-- Fontend dependency -->
+		<dependency>
+			<groupId>net.chibidevteam.ddlmanager</groupId>
+			<artifactId>frontend</artifactId>
+			<version>${project.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- API Versioning -->
+		<dependency>
+			<groupId>net.chibidevteam</groupId>
+			<artifactId>apiversioning</artifactId>
+			<version>${apiversioning-version}</version>
+		</dependency>
+
+		<!-- Seed -->
+		<dependency>
+			<groupId>net.chibidevteam</groupId>
+			<artifactId>securityseed</artifactId>
+			<version>${securityseed-version}</version>
+		</dependency>
+
+		<!-- Spring boot: Web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+		<!-- Spring boot: Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Spring boot: Aop -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-aop</artifactId> -->
+<!-- 		</dependency> -->
+		
+		<!-- Utils -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>false</fork>
+					<arguments>-Djava-agent=org.springframework:springloaded:1.2.6.RELEASE</arguments>
+					<jvmArguments>
+						-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+					</jvmArguments>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>springloaded</artifactId>
+						<version>1.2.6.RELEASE</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
